@@ -1,0 +1,96 @@
+﻿@model AggregateOdds
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 style="text-align:center;color:firebrick">NFL Odds</h1>
+<table class="table table-bordered" table style="border-bottom:ridge; border-block-color:lightslategrey; margin-left:auto;margin-right:auto">
+    <thead>
+        <tr>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="align-content:center; color:firebrick">
+        @foreach (var item in Model.FootballOdds)
+        {
+            <tr>
+                <td style="align-items:center">
+                    @item.home_team vs @item.away_team
+                </td>
+                
+                <td>
+                    <a style="color:firebrick" href="/Home/Detail/@item.id">DETAILS</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h1 style="text-align:center;color:firebrick">NCAAF ODDS</h1>
+
+<table class="table table-bordered" table style="border-bottom:ridge; border-block-color:lightslategrey;margin-left:auto;margin-right:auto">
+    <thead>
+        <tr>
+          
+        </tr>
+    </thead>
+    <tbody style="align-content:center; color:firebrick">
+        @foreach (var item in Model.NcaaOdds)
+        {
+            <tr>
+                <td style="algin-items:center">
+                    @item.home_team vs. @item.away_team
+                </td>
+                <td>
+                    <a style="color: firebrick" href="/Home/NCAAFDetails/@item.id">DETAILS</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h1 style="text-align:center;color:firebrick">NBA Odds</h1>
+
+<table class="table table-bordered"table style="border-bottom:ridge;border-block-color:lightslategray;margin-left:auto;margin-right:auto">
+    <thead>
+        <tr>
+           
+        </tr>
+    </thead>
+    <tbody style="text-align:center;color:firebrick">
+        @foreach (var item in Model.BasketballOdds)
+        {
+            <tr>
+                <td>
+                    @item.home_team vs. @item.away_team
+                </td>
+                <td>
+                    <a style="color:firebrick" href="/Home/NBADetails/@item.id">DETAILS</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h1 style="text-align:center;color:firebrick">NHL ODDS</h1>
+
+<table  class="table table-bordered"table style="border-bottom:ridge;border-block-color:lightslategray;margin-left:auto;margin-right:auto">
+    <thead>
+        <tr>
+            
+        </tr>
+    </thead>
+    <tbody style="text-align:center;color:firebrick">
+        @foreach (var item in Model.HockeyOdds)
+        {
+            <tr>
+                <td>
+                    @item.home_team vs. @item.away_team
+                </td>
+
+                <td>
+                    <a style="color:firebrick" href="/Home/NHLDetails/@item.id">DETAILS</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,73 @@
+﻿@model GameOdds
+
+@{
+    ViewData["Title"] = "NCAAFDetails";
+
+}
+
+<h1 style="text-align:center;color:firebrick">@Model.away_team @@ @Model.home_team</h1>
+<div style="text-align:center;color:firebrick">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.home_team)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.home_team)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.away_team)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.away_team)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.commence_time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.commence_time)
+        </dd>
+    </dl>
+</div>
+
+
+<div class="row">
+    @foreach (var bookmaker in Model.bookmakers)
+    {
+
+        <div class="col-sm-6" style="border-bottom:ridge; border-right:ridge; border-left:ridge;border-top:ridge;border-color:lightslategrey; margin-left:auto;margin-right:auto">
+
+            <h2 style="text-align:center;color:firebrick; text-decoration-line:underline">@bookmaker.title</h2>
+            <br />
+
+
+            @foreach (var market in bookmaker.markets)
+            {
+
+                @foreach (var outcome in market.outcomes)
+                {
+                    <h3 style="text-align:center;color:firebrick">@outcome.name</h3>
+
+
+                    @if (market.key == "h2h")
+                    {
+                        <h4 style="color:firebrick; text-align:center">@outcome.price</h4>
+                    }
+                    else
+                    {
+                        <h4 style="color:firebrick; text-align:center">@outcome.point</h4>
+                    }
+
+                    <br />
+                    <br />
+                }
+            }
+        </div>
+    }
+</div>
+
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
